@@ -8,6 +8,21 @@ fi
 
 python ./mkdirs.py
 
+#: Move example env files {{{
+
+for FILE in configs/env/*; do
+	tmp=${FILE:12}
+	project=${tmp%.env*}
+	move_to=data/$project/.env
+
+	if [ ! -f $move_to ]; then
+		echo Coping $FILE to $move_to
+		cp $FILE $move_to
+	fi
+done
+
+#: }}}
+
 function run_file {
 	PWD="$(pwd)" docker compose up -d -f $1
 }
