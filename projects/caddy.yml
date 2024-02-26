@@ -1,6 +1,9 @@
 services:
   caddy:
     image: caddy:2
+    restart: unless-stopped
+    networks:
+      - caddy-net
     ports:
       - 80:80
       - 443:443

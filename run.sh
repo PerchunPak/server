@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-mkdir -p ./data
+python ./mkdirs.py
 
 function run_file {
 	PWD="$(pwd)" docker compose up -d -f $1
