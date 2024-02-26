@@ -10,7 +10,6 @@ services:
       - 443:443/udp
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
-      - ${PWD}/data/2nd-circle-updates:/static/2nd-circle-updates:ro
       - ${PWD}/configs/caddy:/etc/caddy:ro
       - ${PWD}/data/caddy/data:/data
       - ${PWD}/data/caddy/config:/config
