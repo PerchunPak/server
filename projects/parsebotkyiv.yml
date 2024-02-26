@@ -1,0 +1,8 @@
+services:
+  parsebotkyiv:
+    image: salkoua/parsebotkyiv
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/parsebotkyiv:/app/data
+    env_file:
+      - path: ${PWD}/data/parsebotkyiv/.env
