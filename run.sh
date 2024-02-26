@@ -6,8 +6,10 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+mkdir -p ./data
+
 function run_file {
-	docker compose up -d -f $1
+	DATA_DIR="$(pwd)/data" docker compose up -d -f $1
 }
 
 for FILE in projects/*; do
