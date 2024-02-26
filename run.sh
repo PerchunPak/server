@@ -23,6 +23,9 @@ done
 
 #: }}}
 
+# docker doesn't create network automatically
+docker network create caddy-net
+
 function run_file {
 	PWD="$(pwd)" docker compose -f $1 up -d
 }
