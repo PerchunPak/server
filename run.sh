@@ -24,7 +24,7 @@ done
 #: }}}
 
 function run_file {
-	PWD="$(pwd)" docker compose up -f $1
+	PWD="$(pwd)" docker compose -f $1 up -d
 }
 
 for FILE in projects/*; do
