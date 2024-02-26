@@ -1,0 +1,8 @@
+services:
+  makar-userbot:
+    build: ${PWD}/configs/makar-userbot
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/makar-userbot:/app/data
+    env_file:
+      - path: ${PWD}/data/makar-userbot/.env
