@@ -1,0 +1,12 @@
+services:
+  short-it:
+    image: perchunpak/short-it
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/short-it:/app/data
+    networks:
+      - caddy-net
+
+networks:
+  caddy-net:
+    driver: bridge
