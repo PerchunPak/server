@@ -1,0 +1,16 @@
+services:
+  statusmc-frontend:
+    image: perchunpak/statusmc-frontend
+    restart: unless-stopped
+    networks:
+      - caddy-net
+
+  statusmc-backend:
+    image: perchunpak/statusmc-backend
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/statusmc-backend:/app/data
+
+networks:
+  caddy-net:
+    driver: bridge
