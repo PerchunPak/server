@@ -1,0 +1,5 @@
+pin.perchun.it {
+	import tls-perchun-it
+
+	respond "5631"
+}

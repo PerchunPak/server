@@ -1,0 +1,5 @@
+mil.perchun.it {
+	import tls-perchun-it
+
+	reverse_proxy http://make-it-longer:3000
+}

@@ -9,7 +9,7 @@ fi
 mkdir -p ./data
 
 function run_file {
-	DATA_DIR="$(pwd)/data" docker compose up -d -f $1
+	PWD="$(pwd)" docker compose up -d -f $1
 }
 
 for FILE in projects/*; do

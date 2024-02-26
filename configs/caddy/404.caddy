@@ -1,0 +1,13 @@
+*.perchun.it {
+	import tls-perchun-it
+	import 404-response
+}
+
+*.fugances.xyz {
+	import tls-fugances-xyz
+	respond "404" 404
+}
+
+http:// {
+	import 404-response
+}

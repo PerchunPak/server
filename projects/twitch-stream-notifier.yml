@@ -3,4 +3,4 @@ services:
     image: perchunpak/twitch-stream-notifier
     restart: unless-stopped
     volumes:
-      - ${DATA_DIR}/twitch-stream-notifier:/app/data
+      - ${PWD}/data/twitch-stream-notifier:/app/data

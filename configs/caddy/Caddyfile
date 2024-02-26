@@ -1,0 +1,8 @@
+{
+	#admin off
+	email caddy@perchun.it
+	#debug
+}
+
+import ./*.var
+import ./*.caddy

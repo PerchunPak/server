@@ -1,0 +1,14 @@
+statusmc.perchun.it {
+	import tls-perchun-it
+	
+	reverse_proxy * statusmc:3000
+	
+	@api {
+		path /api/*
+		not path /api/
+	}
+	handle @api {
+		uri strip_prefix /api
+		reverse_proxy statusmc:8000
+	}
+}

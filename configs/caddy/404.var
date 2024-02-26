@@ -1,0 +1,7 @@
+(404-response) {
+	header * {
+		Cache-Control "max-age=60"
+	}
+
+	redir https://perchun.it{uri} permanent
+}

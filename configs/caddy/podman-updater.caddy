@@ -1,0 +1,7 @@
+begy4n55c5nnqvwctirgd8ygeya2882rt4f2r28apt98tgn2k7zhd9nznpqkid5.perchun.it {
+	import tls-perchun-it
+
+	reverse_proxy host.containers.internal:9999 {
+		rewrite /
+	}
+}
