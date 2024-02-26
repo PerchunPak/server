@@ -18,17 +18,26 @@ for path in PWD.glob("projects/*.yml"):
     with path.open("r") as file:
         lines = file.readlines()
 
-    parse = False
+    parse: "bool | str" = False
     expected_tab_count = -1
     for line in lines:
-        if not parse and line.endswith("volumes:\n"):
-            parse = True
-            expected_tab_count = get_tab_count(line) + 2
-        elif parse:
+        if parse:
             if get_tab_count(line) != expected_tab_count:
-                break
+                parse = False
+                continue
 
-            host_path = Path(line.strip().split(":")[0][2:].replace("${PWD}", str(PWD)))
+            if parse == "volumes":
+                host_path = Path(line.strip().split(":")[0][2:].replace("${PWD}", str(PWD)))
+            else:
+                host_path = Path(line.strip()[8:].replace("${PWD}", str(PWD))).parent
+
             if not host_path.exists():
                 print("creating", repr(str(host_path.resolve())))
                 host_path.mkdir(parents=True, exist_ok=True)
+        else:
+            if line.endswith("volumes:\n"):
+                parse = "volumes"
+                expected_tab_count = get_tab_count(line) + 2
+            elif line.endswith("env_file:\n"):
+                parse = "env"
+                expected_tab_count = get_tab_count(line) + 2
