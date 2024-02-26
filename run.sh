@@ -29,10 +29,8 @@ function run_file {
 
 for FILE in projects/*; do
 	if [[ $1 == "all" ]]; then
-		for FILE in projects/*; do
-			run_file $FILE
-		done
-		break
+		run_file $FILE
+		continue
 	fi
 
 	if [[ $1 != $FILE ]]; then
