@@ -5,8 +5,8 @@ services:
     volumes:
       - ${PWD}/data/short-it:/app/data
     networks:
-      - caddy-net
+      - projects_caddy-net
 
 networks:
-  caddy-net:
+  projects_caddy-net:
     external: true

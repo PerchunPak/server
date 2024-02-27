@@ -3,7 +3,7 @@ services:
     image: perchunpak/statusmc-frontend
     restart: unless-stopped
     networks:
-      - caddy-net
+      - projects_caddy-net
 
   statusmc-backend:
     image: perchunpak/statusmc-backend
@@ -12,5 +12,5 @@ services:
       - ${PWD}/data/statusmc-backend:/app/data
 
 networks:
-  caddy-net:
+  projects_caddy-net:
     external: true
