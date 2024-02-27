@@ -1,7 +1,9 @@
 {
-	#admin off
-	email caddy@perchun.it
 	#debug
+	email caddy@perchun.it
+
+	# disable https; cloudflared manages it for us
+	auto_https off
 }
 
 import ./*.var

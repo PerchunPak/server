@@ -1,5 +1,3 @@
-caddy.perchun.it {
-	import tls-perchun-it
-
+http://caddy.perchun.it {
 	respond ok
 }

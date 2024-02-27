@@ -4,10 +4,6 @@ services:
     restart: unless-stopped
     networks:
       - caddy-net
-    ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
       - ${PWD}/configs/caddy/caddyfiles:/etc/caddy:ro

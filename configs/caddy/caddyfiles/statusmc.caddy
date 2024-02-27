@@ -1,6 +1,4 @@
-statusmc.perchun.it {
-	import tls-perchun-it
-	
+http://statusmc.perchun.it {
 	reverse_proxy * statusmc:3000
 	
 	@api {

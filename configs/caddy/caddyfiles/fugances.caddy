@@ -1,12 +1,12 @@
-#anal.fugance.xyz {
+#https://anal.fugance.xyz {
 #	import tls-fugance-xyz
 #
 #	respond /register 405
 #	reverse_proxy http://45.93.200.23:18589
 #}
 
-map.fugances.xyz {
-	import tls-fugances-xyz
+https://map.fugances.xyz {
+	tls /data/certificates/fugances.xyz/certificate.pem /data/certificates/fugances.xyz/key.pem
 
 	reverse_proxy http://176.9.44.181:26100
 }
