@@ -23,10 +23,6 @@ done
 
 #: }}}
 
-# docker doesn't create network automatically
-docker network inspect caddy-net >/dev/null 2>&1 || \
-    docker network create --driver bridge caddy-net
-
 function run_file {
 	PWD="$(pwd)" docker compose -f $1 up -d
 }
