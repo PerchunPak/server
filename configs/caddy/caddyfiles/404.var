@@ -3,5 +3,5 @@
 		Cache-Control "max-age=60"
 	}
 
-	redir https://perchun.it{uri} permanent
+	respond "404 {http.request.host}" 404
 }
