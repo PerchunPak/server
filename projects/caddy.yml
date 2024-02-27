@@ -1,6 +1,6 @@
 services:
   caddy:
-    build: ${PWD}/configs/makar-userbot
+    build: ${PWD}/configs/caddy
     restart: unless-stopped
     networks:
       - caddy-net
