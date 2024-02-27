@@ -17,7 +17,7 @@ services:
   cloudflared:
     image: cloudflare/cloudflared
     restart: unless-stopped
-    command: tunnel --no-autoupdate run --token $TOKEN
+    command: tunnel run
     env_file:
       - path: ${PWD}/data/cloudflared/.env
     networks:
