@@ -1,12 +1,12 @@
 services:
   caddy:
-    build: ${PWD}/configs/caddy
+    image: caddy:2
     restart: unless-stopped
     networks:
       - caddy-net
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
-      - ${PWD}/configs/caddy/caddyfiles:/etc/caddy:ro
+      - ${PWD}/configs/caddy:/etc/caddy:ro
       - ${PWD}/data/caddy/data:/data
       - ${PWD}/data/caddy/config:/config
 
