@@ -1,6 +1,0 @@
-2nd-circle.perchun.it {
-	import tls-perchun-it
-
-	root * /static/2nd-circle
-	file_server browse
-}

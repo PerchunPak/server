@@ -1,5 +1,0 @@
-p.perchun.it {
-	import tls-perchun-it
-
-	reverse_proxy http://pastebin:80
-}

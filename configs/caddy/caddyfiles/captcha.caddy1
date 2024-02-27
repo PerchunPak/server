@@ -1,5 +1,0 @@
-captcha.perchun.it {
-	import tls-perchun-it
-
-	respond success
-}

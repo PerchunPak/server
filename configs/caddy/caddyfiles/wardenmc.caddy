@@ -1,5 +1,0 @@
-wardenmc.perchun.it {
-	import tls-perchun-it
-
-	reverse_proxy fuga-autodonate:3000
-}
