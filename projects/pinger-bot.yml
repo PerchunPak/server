@@ -1,6 +1,6 @@
 services:
   pinger-bot:
-    image: perchunpak/pinger-bot:latest-sqlite
+    image: perchunpak/pingerbot:latest-sqlite
     restart: unless-stopped
     volumes:
       - ${PWD}/data/pinger-bot:/app/pinger/data
