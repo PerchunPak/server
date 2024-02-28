@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     networks:
       - caddy-net
+    extra_hosts:
+      host.docker.internal: host-gateway
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
       - ${PWD}/configs/caddy:/etc/caddy:ro

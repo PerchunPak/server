@@ -9,6 +9,12 @@ fi
 python3 -m scripts.mkdirs
 python3 -m scripts.move_env_files
 
+if [[ $1 == "auto-update" ]]; then
+  chmod +x ./scripts/auto-update/install.sh
+  ./scripts/auto-update/install.sh
+  exit 0
+fi
+
 function run_file {
 	PWD="$(pwd)" docker compose -f $1 up -d
 }
