@@ -6,22 +6,8 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-python3 ./mkdirs.py
-
-#: Move example env files {{{
-
-for FILE in configs/env/*; do
-	tmp=${FILE:12}
-	project=${tmp%.env*}
-	move_to=data/$project/.env
-
-	if [ ! -f $move_to ]; then
-		echo Coping $FILE to $move_to
-		cp $FILE $move_to
-	fi
-done
-
-#: }}}
+python3 -m scripts.mkdirs
+python3 -m scripts.move_env_files
 
 function run_file {
 	PWD="$(pwd)" docker compose -f $1 up -d

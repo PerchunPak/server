@@ -1,7 +1,7 @@
 """Automatically run mkdir on all used directories."""
 from pathlib import Path
 
-PWD = Path(__file__).parent
+from . import PWD
 
 
 def get_tab_count(line: str) -> int:
@@ -27,7 +27,9 @@ for path in PWD.glob("projects/*.yml"):
                 continue
 
             if parse == "volumes":
-                host_path = Path(line.strip().split(":")[0][2:].replace("${PWD}", str(PWD)))
+                host_path = Path(
+                    line.strip().split(":")[0][2:].replace("${PWD}", str(PWD))
+                )
             else:
                 host_path = Path(line.strip()[8:].replace("${PWD}", str(PWD))).parent
 
