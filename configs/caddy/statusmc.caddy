@@ -1,5 +1,5 @@
 http://statusmc.perchun.it {
-	reverse_proxy * statusmc:3000
+	reverse_proxy * projects-statusmc-frontend-1:4321
 	
 	@api {
 		path /api/*
@@ -7,6 +7,6 @@ http://statusmc.perchun.it {
 	}
 	handle @api {
 		uri strip_prefix /api
-		reverse_proxy statusmc:8000
+		reverse_proxy projects-statusmc-backend-1:8000
 	}
 }
