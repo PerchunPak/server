@@ -1,0 +1,10 @@
+services:
+  perchun-it:
+    image: perchunpak/perchun.it
+    restart: unless-stopped
+    networks:
+      - projects_caddy-net
+
+networks:
+  projects_caddy-net:
+    external: true
