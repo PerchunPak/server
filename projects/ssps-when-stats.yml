@@ -1,0 +1,6 @@
+services:
+  ssps-when-stats:
+    image: perchunpak/ssps-when-stats
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/ssps-when-stats:/app/data
