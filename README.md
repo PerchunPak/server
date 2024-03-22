@@ -10,9 +10,9 @@ Restart all projects:
 ./run all
 ```
 
-Restart only `twitch-stream-notifier` (use tab for autocomplete):
+Restart only `kotekbot` (use tab for autocomplete):
 
 ```bash
-./run projects/twitch-stream-notifier.yml
+./run projects/kotekbot.yml
 ```
 

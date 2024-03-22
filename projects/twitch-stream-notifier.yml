@@ -1,6 +1,0 @@
-services:
-  twitch-stream-notifier:
-    image: perchunpak/twitch-stream-notifier
-    restart: unless-stopped
-    volumes:
-      - ${PWD}/data/twitch-stream-notifier:/app/data
