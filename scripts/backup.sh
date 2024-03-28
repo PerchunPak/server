@@ -19,9 +19,11 @@ set -e
 generate_random_string() {
 	echo $(tr -dc A-Za-z0-9 </dev/urandom | head -c 5)
 }
-FILE_NAME="/tmp/data$(generate_random_string).gpg"
+FILE_NAME="/tmp/data_$(generate_random_string).zip.gpg"
 
 zip -r - $DATA_FOLDER | \
 	gpg --batch --trust-model always -o $FILE_NAME --encrypt -r $GPG_KEY_1 -r $GPG_KEY_2
 
 curl -F document=@\"$FILE_NAME\" "https://api.telegram.org/bot$BOT_TOKEN/sendDocument?chat_id=$CHAT_ID"
+
+rm $FILE_NAME
