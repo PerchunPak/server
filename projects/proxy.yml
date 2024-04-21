@@ -1,0 +1,8 @@
+services:
+  proxy:
+    image: serjs/go-socks5-proxy
+    restart: unless-stopped
+    ports:
+      - 8962:1080
+    env_file:
+      - path: ${PWD}/data/proxy/.env
