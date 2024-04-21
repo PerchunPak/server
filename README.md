@@ -7,12 +7,12 @@ These are docker-compose.yml files for server where all of my projects are hoste
 Restart all projects:
 
 ```bash
-./run all
+./run.sh all
 ```
 
 Restart only `kotekbot` (use tab for autocomplete):
 
 ```bash
-./run projects/kotekbot.yml
+./run.sh projects/kotekbot.yml
 ```
 
