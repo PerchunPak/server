@@ -1,0 +1,6 @@
+services:
+  auto-join-spam:
+    image: perchunpak/auto-join-spam
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/auto-join-spam:/app/data
