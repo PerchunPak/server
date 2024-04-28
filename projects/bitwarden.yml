@@ -1,0 +1,14 @@
+services:
+  bitwarden:
+    image: vaultwarden/server
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/bitwarden:/data
+    networks:
+      - projects_caddy-net
+    env_file:
+      - path: ${PWD}/data/bitwarden/.env
+
+networks:
+  projects_caddy-net:
+    external: true
