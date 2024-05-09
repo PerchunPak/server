@@ -4,7 +4,10 @@ services:
       # Use for pre-built image from Docker Hub
       image: hranicky/fitcrack_server:2.4.0
       hostname: fitcrack
-      command: bash -c 'sed -i "s@BACKEND_URL=.*@BACKEND_URL=https://fitcrack.perchun.it/back@" ./entrypoint-fitcrack.sh && ./entrypoint-fitcrack.sh'
+      command: bash -c 'true
+        && sed -i "s@BACKEND_URL=.*@BACKEND_URL=https://fitcrack.perchun.it/back@" ./entrypoint-fitcrack.sh
+        && sed -i "s@BOINC_URL=.*@BOINC_URL=https://fitcrack.perchun.it@" ./entrypoint-fitcrack.sh
+        && ./entrypoint-fitcrack.sh'
       restart: unless-stopped
       networks:
         - projects_caddy-net
