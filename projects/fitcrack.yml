@@ -1,0 +1,38 @@
+version: '3'
+services:
+    fitcrack_server:
+      # Use for pre-built image from Docker Hub
+      image: hranicky/fitcrack_server:2.4.0
+      hostname: fitcrack
+      command: ./entrypoint-fitcrack.sh
+      restart: unless-stopped
+      networks:
+        - projects_caddy-net
+      env_file:
+        - path: ${PWD}/data/statusmc-frontend/.env
+      volumes:
+        # Data that will be preserved when the Docker container is restarted
+        # When preserved, the entrypoint will attempt to load existing Fitcrack installation
+        # When deleted, the entrypoint installs a new Fitcrack project
+
+        - "${PWD}/data/fitcrack/etc:/etc"                                       # Linux system config directory
+        - "${PWD}/data/fitcrack/usr:/usr"                                       # Linux system binaries and libraries directory
+        - "${PWD}/data/fitcrack/run:/run"                                       # Linux system runtime directory
+        - "${PWD}/data/fitcrack/boincadm:/home/boincadm"                        # BOINC server user home directory
+        - "${PWD}/data/fitcrack/mysql:/var/lib/mysql"                           # MySQL server data directory
+        - "${PWD}/data/fitcrack/webadmin-be:/var/www/html/fitcrackAPI"          # Fitcrack backend installation
+        - "${PWD}/data/fitcrack/webadmin-fe:/var/www/html/fitcrackFE"           # Fitcrack frontend installation
+        - "${PWD}/data/fitcrack/logs:/var/log/fitcrack"         # Log directory (host-mapped!)
+        - "${PWD}/data/fitcrack/certificates:/srv/certificates" # Certificate directory (host-mapped!)
+
+        # NOTE: WebAdmin backend copy, frontend Node.JS build, and server + runner binaries are
+        #       built using Dockerfile when the image is created. The entrypoint started with
+        #       'docker-compose up' only installs the Fitcrack server from pre-built binaries.
+        #       Modifying the sources when a pre-built image is used will have no effect.
+        #       In case you modify the implementation, you need to rebuild the image first:
+        #       using 'docker-compose build' or 'docker-compose build --no-cache'.
+
+networks:
+  projects_caddy-net:
+    external: true
+
