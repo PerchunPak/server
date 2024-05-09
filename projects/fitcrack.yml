@@ -4,26 +4,23 @@ services:
       # Use for pre-built image from Docker Hub
       image: hranicky/fitcrack_server:2.4.0
       hostname: fitcrack
-      command: ./entrypoint-fitcrack.sh
+      command: bash -c 'sed -i "s@BACKEND_URL=.*@BACKEND_URL=https://fitcrack.perchun.it/back@" ./entrypoint-fitcrack.sh && ./entrypoint-fitcrack.sh'
       restart: unless-stopped
       networks:
         - projects_caddy-net
       env_file:
-        - path: ${PWD}/data/statusmc-frontend/.env
+        - path: ${PWD}/data/fitcrack/.env
       volumes:
-        # Data that will be preserved when the Docker container is restarted
-        # When preserved, the entrypoint will attempt to load existing Fitcrack installation
-        # When deleted, the entrypoint installs a new Fitcrack project
-
-        - "${PWD}/data/fitcrack/etc:/etc"                                       # Linux system config directory
-        - "${PWD}/data/fitcrack/usr:/usr"                                       # Linux system binaries and libraries directory
-        - "${PWD}/data/fitcrack/run:/run"                                       # Linux system runtime directory
-        - "${PWD}/data/fitcrack/boincadm:/home/boincadm"                        # BOINC server user home directory
-        - "${PWD}/data/fitcrack/mysql:/var/lib/mysql"                           # MySQL server data directory
-        - "${PWD}/data/fitcrack/webadmin-be:/var/www/html/fitcrackAPI"          # Fitcrack backend installation
-        - "${PWD}/data/fitcrack/webadmin-fe:/var/www/html/fitcrackFE"           # Fitcrack frontend installation
-        - "${PWD}/data/fitcrack/logs:/var/log/fitcrack"         # Log directory (host-mapped!)
-        - "${PWD}/data/fitcrack/certificates:/srv/certificates" # Certificate directory (host-mapped!)
+        # you need to run `scripts/setup-fitcrack.sh` before running this container
+        - "fitcrack-etc:/etc"                                       # Linux system config directory
+        - "fitcrack-usr:/usr"                                       # Linux system binaries and libraries directory
+        - "fitcrack-run:/run"                                       # Linux system runtime directory
+        - "fitcrack-boincadm:/home/boincadm"                        # BOINC server user home directory
+        - "fitcrack-mysql:/var/lib/mysql"                           # MySQL server data directory
+        - "fitcrack-webadmin-be:/var/www/html/fitcrackAPI"          # Fitcrack backend installation
+        - "fitcrack-webadmin-fe:/var/www/html/fitcrackFE"           # Fitcrack frontend installation
+        - "fitcrack-logs:/var/log/fitcrack"         # Log directory (host-mapped!)
+        #- "fitcrack-certificates:/srv/certificates" # Certificate directory (host-mapped!)
 
         # NOTE: WebAdmin backend copy, frontend Node.JS build, and server + runner binaries are
         #       built using Dockerfile when the image is created. The entrypoint started with
@@ -35,4 +32,14 @@ services:
 networks:
   projects_caddy-net:
     external: true
+
+volumes:
+  fitcrack-etc:
+  fitcrack-usr:
+  fitcrack-run:
+  fitcrack-boincadm:
+  fitcrack-mysql:
+  fitcrack-webadmin-be:
+  fitcrack-webadmin-fe:
+  fitcrack-logs:
 
