@@ -1,0 +1,8 @@
+http://fitcrack.perchun.it {
+	reverse_proxy * projects-fitcrack_server-1:80
+
+	handle /back/* {
+		uri strip_prefix /back
+		reverse_proxy * projects-fitcrack_server-1:5000
+	}
+}
