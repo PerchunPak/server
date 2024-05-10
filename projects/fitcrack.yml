@@ -15,7 +15,6 @@ services:
       env_file:
         - path: ${PWD}/data/fitcrack/.env
       volumes:
-        # you need to run `scripts/setup-fitcrack.sh` before running this container
         - "fitcrack-etc:/etc"                                       # Linux system config directory
         - "fitcrack-usr:/usr"                                       # Linux system binaries and libraries directory
         - "fitcrack-run:/run"                                       # Linux system runtime directory
