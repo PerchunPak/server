@@ -7,6 +7,7 @@ services:
       command: bash -c 'true
         && sed -i "s@BACKEND_URL=.*@BACKEND_URL=https://fitcrack.perchun.it/back@" ./entrypoint-fitcrack.sh
         && sed -i "s@BOINC_URL=.*@BOINC_URL=https://fitcrack.perchun.it@" ./entrypoint-fitcrack.sh
+        && sed -i "s@url = .*@url = \"http://127.0.0.1:80/fitcrack/server_status.php?xml=1\"@" /var/www/html/fitcrackAPI/src/src/api/fitcrack/endpoints/serverInfo/server.py
         && ./entrypoint-fitcrack.sh'
       restart: unless-stopped
       networks:
