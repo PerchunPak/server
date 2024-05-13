@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+  hashtopolis-backend:
+    image: hashtopolis/backend:latest
+    restart: unless-stopped
+    volumes:
+      - hashtopolis:/usr/local/share/hashtopolis:Z
+    environment:
+      HASHTOPOLIS_APIV2_ENABLE: 0
+
+      HASHTOPOLIS_DB_HOST: hashtopolis-db
+      HASHTOPOLIS_DB_DATABASE: hashtopolis
+      HASHTOPOLIS_DB_USER: hashtopolis
+      HASHTOPOLIS_DB_PASS: hashtopolis
+    env_file:
+      - path: ${PWD}/data/hashtopolis/.env
+    depends_on:
+      - hashtopolis-db
+    networks:
+      - projects_caddy-net
+
+  hashtopolis-db:
+    image: mysql:8.0-debian
+    restart: unless-stopped
+    container_name: hashtopolis-db
+    volumes:
+      - hashtopolis-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: hashtopolis
+      MYSQL_DATABASE: hashtopolis
+      MYSQL_USER: hashtopolis
+      MYSQL_PASSWORD: hashtopolis
+
+  hashtopolis-frontend:
+    image: hashtopolis/frontend:latest
+    restart: unless-stopped
+    environment:
+      HASHTOPOLIS_BACKEND_URL: http://projects-hashtopolis-backend-1
+    depends_on:
+      - hashtopolis-backend
+    networks:
+      - projects_caddy-net
+
+volumes:
+  hashtopolis-db:
+  hashtopolis:
+
+networks:
+  projects_caddy-net:
+    external: true
