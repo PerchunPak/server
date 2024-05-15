@@ -1,5 +1,5 @@
 http://auto-update.perchun.it {
-	reverse_proxy host.containers.internal:9999 {
+	reverse_proxy host.docker.internal:9999 {
 		rewrite /
 	}
 }

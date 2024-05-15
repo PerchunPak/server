@@ -1,0 +1,48 @@
+version: '3'
+services:
+    fitcrack_server:
+      # Use for pre-built image from Docker Hub
+      image: hranicky/fitcrack_server:2.4.0
+      hostname: fitcrack
+      command: bash -c 'true
+        && sed -i "s@BACKEND_URL=.*@BACKEND_URL=https://fitcrack.perchun.it/back@" ./entrypoint-fitcrack.sh
+        && sed -i "s@BOINC_URL=.*@BOINC_URL=https://fitcrack.perchun.it@" ./entrypoint-fitcrack.sh
+        && sed -i "s@url = .*@url = \"http://127.0.0.1:80/fitcrack/server_status.php?xml=1\"@" /var/www/html/fitcrackAPI/src/src/api/fitcrack/endpoints/serverInfo/server.py
+        && ./entrypoint-fitcrack.sh'
+      restart: unless-stopped
+      networks:
+        - projects_caddy-net
+      env_file:
+        - path: ${PWD}/data/fitcrack/.env
+      volumes:
+        - "fitcrack-etc:/etc"                                       # Linux system config directory
+        - "fitcrack-usr:/usr"                                       # Linux system binaries and libraries directory
+        - "fitcrack-run:/run"                                       # Linux system runtime directory
+        - "fitcrack-boincadm:/home/boincadm"                        # BOINC server user home directory
+        - "fitcrack-mysql:/var/lib/mysql"                           # MySQL server data directory
+        - "fitcrack-webadmin-be:/var/www/html/fitcrackAPI"          # Fitcrack backend installation
+        - "fitcrack-webadmin-fe:/var/www/html/fitcrackFE"           # Fitcrack frontend installation
+        - "fitcrack-logs:/var/log/fitcrack"         # Log directory (host-mapped!)
+        #- "fitcrack-certificates:/srv/certificates" # Certificate directory (host-mapped!)
+
+        # NOTE: WebAdmin backend copy, frontend Node.JS build, and server + runner binaries are
+        #       built using Dockerfile when the image is created. The entrypoint started with
+        #       'docker-compose up' only installs the Fitcrack server from pre-built binaries.
+        #       Modifying the sources when a pre-built image is used will have no effect.
+        #       In case you modify the implementation, you need to rebuild the image first:
+        #       using 'docker-compose build' or 'docker-compose build --no-cache'.
+
+networks:
+  projects_caddy-net:
+    external: true
+
+volumes:
+  fitcrack-etc:
+  fitcrack-usr:
+  fitcrack-run:
+  fitcrack-boincadm:
+  fitcrack-mysql:
+  fitcrack-webadmin-be:
+  fitcrack-webadmin-fe:
+  fitcrack-logs:
+

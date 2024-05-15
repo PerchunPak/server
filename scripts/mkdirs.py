@@ -27,6 +27,9 @@ for path in PWD.glob("projects/*.yml"):
                 continue
 
             if parse == "volumes":
+                if "${PWD}" not in parse:
+                    continue
+
                 host_path = Path(
                     line.strip().split(":")[0][2:].replace("${PWD}", str(PWD))
                 )
