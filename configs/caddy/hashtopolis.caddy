@@ -1,3 +1,0 @@
-http://hashtopolis.perchun.it {
-	reverse_proxy http://projects-hashtopolis-backend-1:80
-}
