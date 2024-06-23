@@ -1,8 +1,0 @@
-services:
-  pinger-bot:
-    image: perchunpak/pingerbot:latest-sqlite
-    restart: unless-stopped
-    volumes:
-      - ${PWD}/data/pinger-bot:/app/pinger/data
-    env_file:
-      - path: ${PWD}/data/pinger-bot/.env

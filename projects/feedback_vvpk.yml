@@ -1,8 +1,0 @@
-services:
-  feedback_vvpk:
-    image: salkoua/feedback_vvpk
-    restart: unless-stopped
-    volumes:
-      - ${PWD}/data/feedback_vvpk:/app/data
-    env_file:
-      - path: ${PWD}/data/feedback_vvpk/.env
