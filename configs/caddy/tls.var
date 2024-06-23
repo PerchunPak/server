@@ -1,3 +1,0 @@
-(tls-perchun-it) {
-	tls /data/certificates/perchun.it/certificate.pem /data/certificates/perchun.it/key.pem
-}

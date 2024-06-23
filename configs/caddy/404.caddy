@@ -3,6 +3,5 @@ http://* {
 }
 
 *.perchun.it {
-	import tls-perchun-it
 	import 404-response
 }

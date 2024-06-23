@@ -1,6 +1,4 @@
 auto-update.perchun.it {
-	import tls-perchun-it
-
 	reverse_proxy host.docker.internal:9999 {
 		rewrite /
 	}
