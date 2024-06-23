@@ -1,6 +1,8 @@
-http://statusmc.perchun.it {
+statusmc.perchun.it {
+	import tls-perchun-it
+
 	reverse_proxy * projects-statusmc-frontend-1:4321
-	
+
 	@api {
 		path /api/*
 		not path /api/

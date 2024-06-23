@@ -6,20 +6,15 @@ services:
       - caddy-net
     extra_hosts:
       host.docker.internal: host-gateway
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
       - ${PWD}/configs/caddy:/etc/caddy:ro
       - ${PWD}/data/caddy/data:/data
       - ${PWD}/data/caddy/config:/config
-
-  cloudflared:
-    image: cloudflare/cloudflared
-    restart: unless-stopped
-    command: tunnel run
-    env_file:
-      - path: ${PWD}/data/cloudflared/.env
-    networks:
-      - caddy-net
 
 networks:
   caddy-net:

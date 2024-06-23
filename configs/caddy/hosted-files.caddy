@@ -1,4 +1,6 @@
-http://files.perchun.it {
+files.perchun.it {
+	import tls-perchun-it
+
 	root * /static/hosted-files
 	file_server
 }

@@ -1,8 +1,9 @@
-http://*.perchun.it {
+*.perchun.it {
+	import tls-perchun-it
 	import 404-response
 }
 
-https://*.fugances.xyz {
-	tls /data/certificates/fugances.xyz/certificate.pem /data/certificates/fugances.xyz/key.pem
+*.fugances.xyz {
+	import tls-fugance-xyz
 	import 404-response
 }

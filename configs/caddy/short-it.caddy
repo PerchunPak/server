@@ -1,3 +1,5 @@
-http://s.perchun.it {
-	reverse_proxy http://projects-short-it-1:8080
+s.perchun.it {
+	import tls-perchun-it
+
+	reverse_proxy projects-short-it-1:8080
 }
