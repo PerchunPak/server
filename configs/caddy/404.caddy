@@ -6,8 +6,3 @@ http://* {
 	import tls-perchun-it
 	import 404-response
 }
-
-*.fugances.xyz {
-	import tls-fugance-xyz
-	import 404-response
-}
