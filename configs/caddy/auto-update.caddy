@@ -1,4 +1,4 @@
-http://auto-update.perchun.it {
+auto-update.perchun.it {
 	reverse_proxy host.docker.internal:9999 {
 		rewrite /
 	}

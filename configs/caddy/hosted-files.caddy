@@ -1,4 +1,4 @@
-http://files.perchun.it {
+files.perchun.it {
 	root * /static/hosted-files
 	file_server
 }
