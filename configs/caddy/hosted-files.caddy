@@ -2,3 +2,8 @@ files.perchun.it {
 	root * /static/hosted-files
 	file_server
 }
+
+http://gentix.perchun.it {
+	root * /static/hosted-files/gentix
+	file_server
+}
