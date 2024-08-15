@@ -1,12 +1,12 @@
-import yaml
 import os
 import subprocess
+import typing as t
+from pathlib import Path
 
 import fastapi
-import uvicorn
-from pathlib import Path
 import pydantic
-import typing as t
+import uvicorn
+import yaml
 
 PWD = Path(__file__).parent.parent.parent
 app = fastapi.FastAPI()
@@ -30,7 +30,10 @@ def update_service(body: Body) -> t.Literal["success"]:
     if not (PWD / "projects" / f"{body.project}.yml").exists():
         raise fastapi.HTTPException(status_code=404, detail="Service not found")
 
-    subprocess.run(["git", "pull"], cwd=PWD, check=True)
+    try:
+        subprocess.run(["git", "pull"], cwd=PWD, check=True)
+    except subprocess.CalledProcessError:
+        raise fastapi.HTTPException(status_code=500, detail="git pull failed")
     info = get_project_info(body.project)
 
     for service in info.services:
