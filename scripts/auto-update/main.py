@@ -20,6 +20,7 @@ class Body(pydantic.BaseModel):
 class ProjectInfo(pydantic.BaseModel):
     file: Path
     services: list[str]
+    images: list[str]
 
 
 @app.post("/")
@@ -35,6 +36,10 @@ def update_service(body: Body) -> t.Literal["success"]:
     except subprocess.CalledProcessError:
         raise fastapi.HTTPException(status_code=500, detail="git pull failed")
     info = get_project_info(body.project)
+
+    for image in info.images:
+        image = image.split(":")[0] # remove version, e.g. `caddy:2`
+        subprocess.run(["docker", "pull", image], check=True)
 
     for service in info.services:
         subprocess.run(["docker", "rm", "-f", f"projects-{service}-1"], check=True)
@@ -52,6 +57,7 @@ def get_project_info(project_name: str) -> ProjectInfo:
     return ProjectInfo(
         file=project_file,
         services=list(data["services"].keys()),
+        images=[service["image"] for service in data["services"]],
     )
 
 
