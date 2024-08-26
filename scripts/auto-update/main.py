@@ -57,7 +57,7 @@ def get_project_info(project_name: str) -> ProjectInfo:
     return ProjectInfo(
         file=project_file,
         services=list(data["services"].keys()),
-        images=[service["image"] for service in data["services"]],
+        images=[service["image"] for service in data["services"].values()],
     )
 
 
