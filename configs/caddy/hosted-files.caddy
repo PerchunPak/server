@@ -7,3 +7,8 @@ http://gentix.perchun.it {
 	root * /static/hosted-files/gentix
 	file_server
 }
+
+schedule.salko-ua.de {
+        root * /static/hosted-files/schedules
+        file_server
+}
