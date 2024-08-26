@@ -10,5 +10,6 @@ http://gentix.perchun.it {
 
 schedule.salko-ua.de {
         root * /static/hosted-files/schedules
+	templates
         file_server
 }
