@@ -16,19 +16,19 @@ if [[ $1 == "auto-update" ]]; then
 fi
 
 function run_file {
-	PWD="$(pwd)" docker compose -f $1 up -d
+	PWD="$(pwd)" docker compose -f "$1" up -d
 }
 
 for FILE in projects/*; do
 	if [[ $1 == "all" ]]; then
-		run_file $FILE
+		run_file "$FILE"
 		continue
 	fi
 
-	if [[ $1 != $FILE ]]; then
+	if [[ $1 != "$FILE" ]]; then
 		continue
 	fi
 
-	run_file $FILE
+	run_file "$FILE"
 	break
 done

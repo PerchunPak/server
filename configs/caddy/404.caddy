@@ -5,3 +5,11 @@ http://* {
 *.perchun.it {
 	import 404-response
 }
+
+salko-ua.de {
+	import 404-response
+}
+
+*.salko-ua.de {
+	import 404-response
+}
