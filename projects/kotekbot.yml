@@ -1,0 +1,8 @@
+services:
+  kotekbot:
+    image: maximyuk/kotekbot
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/kotekbot:/app/data
+    env_file:
+      - path: ${PWD}/data/kotekbot/.env
