@@ -1,0 +1,6 @@
+services:
+  makarbot:
+    image: makar2025/telegram_bot1
+    restart: unless-stopped
+    env_file:
+      - path: ${PWD}/data/makarbot/.env
