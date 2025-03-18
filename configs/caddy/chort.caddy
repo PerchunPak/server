@@ -1,0 +1,4 @@
+chort.perchun.it {
+	root * /static/count-down-for-chornushka
+	file_server
+}
