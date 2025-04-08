@@ -13,3 +13,7 @@ salko-ua.de {
 *.salko-ua.de {
 	import 404-response
 }
+
+*.h4folks.com {
+	import 404-response
+}
