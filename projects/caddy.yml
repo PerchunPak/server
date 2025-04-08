@@ -13,6 +13,7 @@ services:
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
       - ${PWD}/data/count-down-for-chornushka:/static/count-down-for-chornushka:ro
+      - ${PWD}/data/h4folks:/static/h4folks:ro
       - ${PWD}/configs/caddy:/etc/caddy:ro
       - ${PWD}/data/caddy/data:/data
       - ${PWD}/data/caddy/config:/config
