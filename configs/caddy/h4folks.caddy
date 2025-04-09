@@ -1,4 +1,6 @@
 h4folks.com {
 	root * /static/h4folks
-	file_server
+	file_server {
+		precompressed
+	}
 }
