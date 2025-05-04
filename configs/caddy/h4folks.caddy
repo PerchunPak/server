@@ -4,3 +4,15 @@ h4folks.com {
 		precompressed
 	}
 }
+
+panel.h4folks.com {
+	reverse_proxy projects-h4folks-panel:80
+}
+
+wings.h4folks.com {
+	reverse_proxy projects-h4folks-wings:8080
+}
+
+http://wings-sftp.h4folks.com {
+	reverse_proxy http://projects-h4folks-wings:2020
+}
