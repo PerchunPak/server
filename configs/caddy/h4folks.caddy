@@ -13,6 +13,6 @@ wings.h4folks.com {
 	reverse_proxy projects-h4folks-wings:8080
 }
 
-wings-sftp.h4folks.com {
+http://wings-sftp.h4folks.com {
 	reverse_proxy http://projects-h4folks-wings:2020
 }
