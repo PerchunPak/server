@@ -1,7 +1,0 @@
-{
-	#debug
-	email caddy@perchun.it
-}
-
-import ./*.var
-import ./*.caddy

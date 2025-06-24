@@ -1,6 +1,0 @@
-services:
-  parsebot:
-    image: salkoua/parsebot
-    restart: unless-stopped
-    env_file:
-      - path: ${PWD}/data/parsebot/.env

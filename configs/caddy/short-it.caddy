@@ -1,3 +1,0 @@
-s.perchun.it {
-	reverse_proxy projects-short-it-1:8080
-}

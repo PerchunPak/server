@@ -1,3 +1,0 @@
-bw.perchun.it {
-	reverse_proxy http://projects-bitwarden-1
-}

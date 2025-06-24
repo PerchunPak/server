@@ -1,3 +1,0 @@
-perchun.it {
-	reverse_proxy http://projects-perchun-it-1:3000
-}

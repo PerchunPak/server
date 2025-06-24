@@ -1,8 +1,0 @@
-services:
-  parsebotforsale:
-    image: salkoua/parsebotforsale
-    restart: unless-stopped
-    volumes:
-      - ${PWD}/data/parsebotforsale:/app/data
-    env_file:
-      - path: ${PWD}/data/parsebotforsale/.env
