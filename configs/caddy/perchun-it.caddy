@@ -1,6 +1,4 @@
 perchun.it {
-	tls {
-		dns cloudflare {env.CF_PERCHUN_API_TOKEN}
-	}
+	import tls-perchun
 	reverse_proxy http://projects-perchun-it-1:3000
 }

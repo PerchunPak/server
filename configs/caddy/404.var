@@ -1,7 +1,0 @@
-(404-response) {
-	header * {
-		Cache-Control "max-age=60"
-	}
-
-	respond "404 {http.request.host}" 404
-}

@@ -3,16 +3,16 @@ http://* {
 }
 
 *.perchun.it {
+	import tls-perchun
 	import 404-response
 }
 
 *.salko-ua.de {
-	tls {
-		dns cloudflare {env.CF_SALO_API_TOKEN}
-	}
+	import tls-salo
 	import 404-response
 }
 
 *.h4folks.com {
+	import tls-salo
 	import 404-response
 }

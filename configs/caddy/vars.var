@@ -1,0 +1,18 @@
+(404-response) {
+	header * {
+		Cache-Control "max-age=60"
+	}
+
+	respond "404 {http.request.host}" 404
+}
+
+(tls-perchun) {
+	tls {
+		dns cloudflare {env.CF_PERCHUN_API_TOKEN}
+	}
+}
+(tls-salo) {
+	tls {
+		dns cloudflare {env.CF_SALO_API_TOKEN}
+	}
+}
