@@ -1,11 +1,13 @@
 services:
   caddy:
-    image: caddy:2.9.1
+    image: perchunpak/caddy-bundle
     restart: unless-stopped
     networks:
       - caddy-net
     extra_hosts:
       host.docker.internal: host-gateway
+    env_file:
+      - path: ${PWD}/data/caddy/.env
     ports:
       - 80:80
       - 443:443

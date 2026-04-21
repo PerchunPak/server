@@ -1,4 +1,7 @@
 h4folks.com {
+	tls {
+		dns cloudflare {env.CF_SALO_API_TOKEN}
+	}
 	root * /static/h4folks
 	file_server {
 		precompressed

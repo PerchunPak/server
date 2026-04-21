@@ -6,11 +6,10 @@ http://* {
 	import 404-response
 }
 
-salko-ua.de {
-	import 404-response
-}
-
 *.salko-ua.de {
+	tls {
+		dns cloudflare {env.CF_SALO_API_TOKEN}
+	}
 	import 404-response
 }
 
