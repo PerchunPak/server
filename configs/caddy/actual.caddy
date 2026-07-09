@@ -1,0 +1,4 @@
+actual.h4folks.com {
+	encode gzip zstd
+	reverse_proxy http://projects-actual-1:5006
+}
