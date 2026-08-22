@@ -1,0 +1,40 @@
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:16
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    networks:
+      - projects_caddy-net
+    volumes:
+      - ${PWD}/data/forgejo:/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 222:22
+
+  forgejo-docker-in-docker:
+    image: docker:dind
+    restart: unless-stopped
+    privileged: true
+    command: ['dockerd', '-H', 'tcp://0.0.0.0:2375', '--tls=false']
+
+  forgejo-runner:
+    image: data.forgejo.org/forgejo/runner:13
+    restart: unless-stopped
+    links:
+      - forgejo-docker-in-docker
+    depends_on:
+      forgejo-docker-in-docker:
+        condition: service_started
+    environment:
+      DOCKER_HOST: tcp://forgejo-docker-in-docker:2375
+    # User without root privileges, but with access to `./data`.
+    user: 1001:1001
+    volumes:
+      - ${PWD}/data/forgejo-runner:/data
+    command: forgejo-runner daemon --config runner-config.yml
+
+networks:
+  projects_caddy-net:
+    external: true

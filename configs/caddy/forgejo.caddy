@@ -1,0 +1,3 @@
+git.h4folks.com {
+	reverse_proxy http://projects-forgejo-1:3000
+}
