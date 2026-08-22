@@ -13,8 +13,6 @@ services:
       - ${PWD}/data/actual:/data
     networks:
       - projects_caddy-net
-    env_file:
-      - path: ${PWD}/data/actual/.env
 
 networks:
   projects_caddy-net:
