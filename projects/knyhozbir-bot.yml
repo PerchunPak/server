@@ -1,0 +1,8 @@
+services:
+  knyhozbir-bot:
+    image: perchunpak/knyhozbir-bot
+    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/knyhozbir-bot/knyhozbir.db:/app/knyhozbir.db
+    env_file:
+      - path: ${PWD}/data/knyhozbir-bot/.env
