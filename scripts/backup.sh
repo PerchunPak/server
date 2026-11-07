@@ -19,7 +19,7 @@ set -ex
 FILE_NAME="/tmp/data_$(date +"%Y-%m-%d_%H-%M-%S").tar.gz"
 
 rm $FILE_NAME || true
-tar -zcvf "$FILE_NAME" --exclude='*.png' "$DATA_FOLDER"
+tar -zcvf "$FILE_NAME" --exclude='*.png' --exclude="$DATA_FOLDER/forgejo-runner/.cache" "$DATA_FOLDER"
 
 gpg --no-tty --keyserver keys.openpgp.org --recv-keys "$GPG_KEY_1"
 gpg --no-tty --keyserver keys.openpgp.org --recv-keys "$GPG_KEY_2"
