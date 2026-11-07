@@ -1,0 +1,21 @@
+services:
+  headscale:
+    image: headscale/headscale:0.29.3
+    restart: unless-stopped
+    command: serve
+    volumes:
+      - ${PWD}/data/headscale/config:/etc/headscale
+      - ${PWD}/data/headscale/lib:/var/lib/headscale
+      - ${PWD}/data/headscale/run:/var/run/headscale
+    networks:
+      - projects_caddy-net
+
+  headscale-admin:
+    image: goodieshq/headscale-admin:0.28.0
+    restart: unless-stopped
+    networks:
+      - projects_caddy-net
+
+networks:
+  projects_caddy-net:
+    external: true

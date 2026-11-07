@@ -1,0 +1,8 @@
+headscale.h4folks.com {
+	handle /admin* {
+		reverse_proxy projects-headscale-admin-1:80
+	}
+	handle {
+		reverse_proxy projects-headscale-1:8080
+	}
+}

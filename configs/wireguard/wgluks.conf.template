@@ -1,0 +1,22 @@
+[Interface]
+Address = 10.200.0.1/24
+ListenPort = 51820
+PrivateKey = <RESTORE_SERVER_PRIVATE_KEY -- see README>
+# allow the two WG peers (initrd + your unlock device) to reach each other
+PostUp   = iptables -A FORWARD -i wgluks -o wgluks -j ACCEPT
+PostDown = iptables -D FORWARD -i wgluks -o wgluks -j ACCEPT
+
+[Peer]
+# desktop salo-pc -- early-boot initrd
+PublicKey = q8Po0POeoPwj7gFq2GFYzHHWw9/ZTFGDnXi4FRUItSg=
+AllowedIPs = 10.200.0.2/32
+
+[Peer]
+# phone -- remote unlock
+PublicKey = T0MqfttlVA755gCtOoWFzfa9ukY2YBhU1iPM3YTrIlU=
+AllowedIPs = 10.200.0.3/32
+
+[Peer]
+# laptop -- remote unlock
+PublicKey = teTJMrSvsKaBCi1NYkvSmSMB8Psfr/teuyHCzi28oRw=
+AllowedIPs = 10.200.0.4/32
