@@ -1,0 +1,5 @@
+#*/1  *  * * *   ubuntu  curl 'https://kuma.perchun.it/api/push/<token>?status=up&msg=OK&ping='
+0    1  * * *   root    reboot
+*/10 *  * * *   root    bash /home/ubuntu/configs/data/backup.sh
+0    0  * * *   ubuntu  cd /home/ubuntu/configs && /home/ubuntu/configs/update-all.sh
+0  7,17 * * *   ubuntu  /home/ubuntu/configs/scripts/trigger-perchun-flake-lock-update.sh
