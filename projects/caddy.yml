@@ -15,6 +15,7 @@ services:
     volumes:
       - ${PWD}/data/hosted-files:/static/hosted-files:ro
       - ${PWD}/data/h4folks:/static/h4folks:ro
+      - ${PWD}/data/statusmc:/static/statusmc:ro
       - ${PWD}/configs/caddy:/etc/caddy:ro
       - ${PWD}/data/caddy/data:/data
       - ${PWD}/data/caddy/config:/config
